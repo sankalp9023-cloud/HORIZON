@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #d4d4d8;
+  border-radius: 9999px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #27272a;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1aa;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    background-color: #fbfbfd;
+    color: #18181b;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    overflow-x: hidden;
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+
+  html.dark body {
+    background-color: #09090b;
+    color: #f4f4f5;
+  }
+
+  /* Smooth focus styles */
+  :focus-visible {
+    outline: 2px solid #6366f1;
+    outline-offset: 2px;
+  }
+}
+
+/* Light theme overrides for legacy component colors that were authored as
+   fixed dark-palette Tailwind utilities. Keep these centralized so every
+   lazily-loaded section uses the same readable light surfaces. */
+@layer utilities {
+  html.light [class~="text-[#f4f4f5]"],
+  html.light [class~="text-zinc-200"],
+  html.light [class~="text-zinc-300"] {
+    color: #27272a !important;
+  }
+
+  html.light [class~="text-[#9ca3af]"],
+  html.light [class~="text-zinc-400"],
+  html.light [class~="text-zinc-500"] {
+    color: #52525b !important;
+  }
+
+  html.light [class~="text-zinc-600"] { color: #71717a !important; }
+  html.light [class~="text-zinc-700"] { color: #52525b !important; }
+
+  html.light [class~="bg-[#0f1015]"],
+  html.light [class~="bg-[#0f1015]/90"],
+  html.light [class~="bg-[#111216]"],
+  html.light [class~="bg-[#111217]"],
+  html.light [class~="bg-[#111216]/90"],
+  html.light [class~="bg-[#111216]/80"],
+  html.light [class~="bg-[#0a0b0e]"],
+  html.light [class~="bg-[#090a0d]"],
+  html.light [class~="bg-[#0d0e12]"],
+  html.light [class~="bg-[#0c0d12]"],
+  html.light [class~="bg-[#12131a]"],
+  html.light [class~="bg-[#121318]"],
+  html.light [class~="bg-[#13151c]"],
+  html.light [class~="bg-[#14151f]"],
+  html.light [class~="bg-[#14161f]"],
+  html.light [class~="bg-[#141620]"],
+  html.light [class~="bg-[#15161f]"],
+  html.light [class~="bg-[#161720]"],
+  html.light [class~="bg-[#16171f]"],
+  html.light [class~="bg-[#181922]"],
+  html.light [class~="bg-[#191b24]"],
+  html.light [class~="bg-[#1a1c24]"],
+  html.light [class~="bg-[#1a1c26]"],
+  html.light [class~="bg-[#1b1d26]"],
+  html.light [class~="bg-[#1f2230]"],
+  html.light [class~="bg-[#20222c]"],
+  html.light [class~="bg-[#20222f]"],
+  html.light [class~="bg-[#222534]"],
+  html.light [class~="bg-[#252836]"],
+  html.light [class~="bg-[#262834]"],
+  html.light [class~="bg-[#2b2e40]"],
+  html.light [class~="bg-[#2b2e3e]"] {
+    background-color: #ffffff !important;
+  }
+
+  html.light [class~="hover:bg-[#12131a]"]:hover,
+  html.light [class~="hover:bg-[#13151c]"]:hover,
+  html.light [class~="hover:bg-[#181922]"]:hover,
+  html.light [class~="hover:bg-[#20222c]"]:hover,
+  html.light [class~="hover:bg-[#222534]"]:hover {
+    background-color: #f4f4f5 !important;
+  }
+
+  html.light [class*="border-[#1"],
+  html.light [class*="border-[#2"],
+  html.light [class~="border-[#090a0d]"],
+  html.light [class~="border-[#0f1015]"],
+  html.light [class~="border-[#20222a]"],
+  html.light [class~="border-[#222432]"] {
+    border-color: #e4e4e7 !important;
+  }
+}
