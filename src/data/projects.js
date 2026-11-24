@@ -19,7 +19,7 @@ export const projects = [
       { label: 'Progress', value: 'XP · Streaks · Badges' }
     ],
     technologies: ['React', 'Vite', 'Fastify', 'Prisma', 'PostgreSQL', 'Vercel'],
-    links: {}
+    links: { live: 'https://life-stack-pink.vercel.app/' }
   }
 ];
 
