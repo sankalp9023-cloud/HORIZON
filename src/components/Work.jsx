@@ -82,9 +82,6 @@ export default function Work() {
               aria-pressed={isActive}
             >
               <span>{cat}</span>
-              {isActive && (
-                <span className="ml-1.5 inline-block w-1 h-1 rounded-full bg-indigo-400 dark:bg-indigo-600 align-middle"></span>
-              )}
             </button>
           );
         })}
@@ -106,7 +103,7 @@ export default function Work() {
               className="py-16 text-center rounded-2xl bg-white dark:bg-[#0f1015] border border-zinc-200 dark:border-[#1f212a]"
             >
               <p className="text-zinc-500 dark:text-zinc-400 text-sm font-mono mb-3">
-                No projects currently cataloged under this category.
+                No projects listed yet.
               </p>
               <button
                 onClick={() => setSelectedCategory('All')}

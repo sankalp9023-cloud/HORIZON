@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { useReducedMotion } from 'framer-motion';
 import { useTheme } from '../context/ThemeContext';
 
-export default function WormholeBackground({ opacity = 1 }) {
+export default function WormholeBackground({ opacity = 1, focalPointX = 0.5 }) {
   const containerRef = useRef(null);
   const canvasRef = useRef(null);
   const shouldReduceMotion = useReducedMotion();
@@ -51,7 +51,7 @@ export default function WormholeBackground({ opacity = 1 }) {
       const h = canvas.height;
       ctx.clearRect(0, 0, w, h);
 
-      const cx = w * 0.5;
+      const cx = w * (window.innerWidth < 768 ? 0.5 : focalPointX);
       const cy = h * 0.5;
       const baseRadius = Math.min(w, h) * 0.38;
       const dark = isDarkRef.current;
@@ -203,7 +203,7 @@ export default function WormholeBackground({ opacity = 1 }) {
       document.removeEventListener('visibilitychange', onVisibility);
       window.removeEventListener('resize', onResize);
     };
-  }, [shouldReduceMotion]);
+  }, [focalPointX, shouldReduceMotion]);
 
   return (
     <div

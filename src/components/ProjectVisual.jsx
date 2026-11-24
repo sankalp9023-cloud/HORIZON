@@ -48,8 +48,7 @@ export default function ProjectVisual({ type }) {
 
         {/* Live Status Metric Bar */}
         <div className="flex items-center justify-between pt-3 border-t border-zinc-800 dark:border-[#181a24] text-[10px]">
-          <span className="flex items-center gap-1.5 text-emerald-400">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span className="flex items-center text-emerald-400">
             SYNCED WITH L1
           </span>
           <span className="text-zinc-400">p99: 2.8ms</span>

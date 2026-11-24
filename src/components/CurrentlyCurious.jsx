@@ -58,7 +58,7 @@ export default function CurrentlyCurious() {
     >
       {/* ── Galaxy Background (scroll-linked, lazy) ─────────────────── */}
       <motion.div
-        className="absolute inset-0 -z-10"
+        className="absolute inset-0 z-0"
         style={{ opacity: bgOpacity, y: bgY }}
       >
         <Suspense fallback={null}>
@@ -66,8 +66,27 @@ export default function CurrentlyCurious() {
         </Suspense>
       </motion.div>
 
+      {/* Quiet book-stack watermark to echo the reading and research theme. */}
+      <div className="pointer-events-none absolute right-[4%] top-[8%] z-0 hidden lg:block w-64 text-indigo-500/[0.12] dark:text-indigo-300/[0.12]" aria-hidden="true">
+        <svg viewBox="0 0 260 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g stroke="currentColor" strokeWidth="2" strokeLinejoin="round">
+            <path d="m50 142 117-32 43 20-117 35-43-23Z" fill="currentColor" fillOpacity=".12" />
+            <path d="m50 142 1 15 42 24 1-16m116-35v15l-117 36" />
+            <path d="m67 112 111-31 43 19-112 33-42-21Z" fill="currentColor" fillOpacity=".18" />
+            <path d="m67 112 1 14 41 23 1-16m111-46v13l-112 33" />
+            <path d="m83 83 103-30 38 18-104 31-37-19Z" fill="currentColor" fillOpacity=".24" />
+            <path d="m83 83 1 13 36 21 1-15m103-31v12l-104 31" />
+            <path d="m114 67 1-27 19-11 20 5 1 26m-40-20 20 5 19-11m-39 26 20 5 20-10" />
+            <path d="m133 29 1 36" />
+            <path d="m32 198 95-28 35 18-96 29-34-19Z" />
+            <path d="m32 198 1 12 33 19 1-12m95-29v12l-96 29" />
+          </g>
+          <path d="m122 76 8-2m-8 11 8-2m-8 11 8-2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+        </svg>
+      </div>
+
       {/* ── Content (stays above the background) ─────────────────────── */}
-      <div className="max-w-6xl mx-auto">
+      <div className="relative z-10 max-w-6xl mx-auto">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 16 }}

@@ -3,7 +3,7 @@ import { ArrowDown, Compass } from 'lucide-react';
 import { motion, useReducedMotion } from 'framer-motion';
 import CosmicHorizon from './CosmicHorizon';
 
-export default function Hero() {
+export default function Hero({ scrolled }) {
   const shouldReduceMotion = useReducedMotion();
 
   const handleHeroActionClick = (sectionId) => {
@@ -28,21 +28,27 @@ export default function Hero() {
       {/* Interactive Cosmic Visual Background */}
       <CosmicHorizon />
 
-      {/* Top Meta Indicator */}
-      <motion.div
-        variants={fadeIn}
-        initial="hidden"
-        animate="visible"
-        custom={0}
-        className="flex items-center gap-3 text-xs font-mono tracking-wider uppercase z-10"
-      >
-        <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/80 dark:bg-[#111216]/80 backdrop-blur-sm border border-zinc-200 dark:border-[#20222a] text-zinc-700 dark:text-[#9ca3af] shadow-xs">
-          <span className="w-1.5 h-1.5 rounded-full bg-indigo-600 dark:bg-indigo-400"></span>
-          HORIZON
-        </span>
-        <span className="text-zinc-400 dark:text-zinc-600">/</span>
-        <span className="text-zinc-500 dark:text-zinc-400">Curated & Built by Sam</span>
-      </motion.div>
+      {/* Profile portrait and name transition into the navbar brand as the page scrolls. */}
+      <div className="relative z-10 flex min-h-[250px] flex-col items-center pt-2">
+        {!scrolled && (
+          <>
+            <motion.img
+              layoutId="profile-avatar"
+              src="/profile-org.jpeg"
+              alt="Sam"
+              transition={shouldReduceMotion ? { duration: 0 } : { type: 'spring', stiffness: 320, damping: 32 }}
+              className="h-32 w-32 rounded-full border-2 border-indigo-400/70 object-cover object-center shadow-[0_0_36px_rgba(99,102,241,0.25)] ring-4 ring-white/70 dark:ring-[#111216]/70"
+            />
+            <motion.h2
+              layoutId="profile-name"
+              transition={shouldReduceMotion ? { duration: 0 } : { type: 'spring', stiffness: 320, damping: 32 }}
+              className="mt-4 text-center text-2xl font-semibold tracking-tight text-zinc-900 dark:text-[#f4f4f5] sm:text-3xl"
+            >
+              Sankalp singh 
+            </motion.h2>
+          </>
+        )}
+      </div>
 
       {/* Main Hero Content */}
       <div className="my-auto py-12 max-w-3xl z-10">

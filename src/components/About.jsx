@@ -64,16 +64,16 @@ export default function About() {
     >
       {/* ── Wormhole Background (scroll-linked, lazy) ─────────────────── */}
       <motion.div
-        className="absolute inset-0 -z-10"
+        className="absolute inset-0 z-0"
         style={{ opacity: bgOpacity, y: bgY }}
       >
         <Suspense fallback={null}>
-          <WormholeBackground />
+          <WormholeBackground focalPointX={0.66} />
         </Suspense>
       </motion.div>
 
       {/* ── Content ───────────────────────────────────────────────────── */}
-      <div className="max-w-6xl mx-auto">
+      <div className="relative z-10 max-w-6xl mx-auto">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 16 }}

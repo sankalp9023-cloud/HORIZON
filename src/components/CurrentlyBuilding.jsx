@@ -64,8 +64,7 @@ export default function CurrentlyBuilding() {
             {/* Top Status & Timestamp */}
             <div>
               <div className="flex items-center justify-between text-xs font-mono mb-4">
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-indigo-950/40 text-indigo-300 border border-indigo-800/40">
-                  <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse"></span>
+                <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-indigo-950/40 text-indigo-300 border border-indigo-800/40">
                   {item.status}
                 </span>
                 <span className="text-zinc-500 text-[11px] flex items-center gap-1">

@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 import ThemeToggle from './ThemeToggle';
 
-export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
+export default function Navbar({ scrolled }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-
       // Simple active section detection
-      const sections = ['work', 'building', 'about', 'curiosity', 'contact'];
+      const sections = ['work', 'about', 'curiosity', 'contact'];
       const scrollPosition = window.scrollY + 200;
 
       for (const id of sections) {
@@ -38,7 +36,6 @@ export default function Navbar() {
 
   const navLinks = [
     { name: 'Work', href: '#work', id: 'work' },
-    { name: 'Building', href: '#building', id: 'building' },
     { name: 'About', href: '#about', id: 'about' },
     { name: 'Curiosity', href: '#curiosity', id: 'curiosity' },
     { name: 'Contact', href: '#contact', id: 'contact' },
@@ -59,16 +56,26 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 sm:px-8 flex items-center justify-between">
-        {/* Brand Name — HORIZON */}
-        <a
-          href="#"
-          className="group flex items-center gap-2.5 text-lg font-medium tracking-wider text-zinc-900 dark:text-[#f4f4f5] hover:opacity-90 transition-opacity"
-        >
-          {/* Horizon Icon Mark */}
-          <span className="relative flex items-center justify-center w-5 h-5 rounded-full border border-zinc-300 dark:border-zinc-700/80 group-hover:border-zinc-500 transition-colors">
-            <span className="w-2.5 h-[1.5px] bg-indigo-600 dark:bg-indigo-400"></span>
-          </span>
-          <span className="font-mono tracking-widest text-sm font-bold uppercase">HORIZON</span>
+        {/* The compact profile replaces the old HORIZON wordmark after scrolling. */}
+        <a href="#" aria-label="Sam, home" className="group flex items-center gap-2.5 text-zinc-900 dark:text-[#f4f4f5]">
+          {scrolled && (
+            <>
+              <motion.img
+                layoutId="profile-avatar"
+                src="/profile-org.jpeg"
+                alt=""
+                transition={{ type: 'spring', stiffness: 320, damping: 32 }}
+                className="h-8 w-8 rounded-full border border-indigo-400/70 object-cover object-center ring-2 ring-white/80 dark:ring-[#111216]/80"
+              />
+              <motion.span
+                layoutId="profile-name"
+                transition={{ type: 'spring', stiffness: 320, damping: 32 }}
+                className="font-semibold tracking-tight text-sm"
+              >
+                Sam
+              </motion.span>
+            </>
+          )}
         </a>
 
         {/* Desktop Navigation Links & Theme Toggle */}

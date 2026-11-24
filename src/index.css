@@ -58,6 +58,23 @@
    fixed dark-palette Tailwind utilities. Keep these centralized so every
    lazily-loaded section uses the same readable light surfaces. */
 @layer utilities {
+  html.light [class*="bg-[#0"],
+  html.light [class*="bg-[#1"],
+  html.light [class*="bg-[#2"] {
+    background-color: #ffffff !important;
+  }
+
+  html.light [class*="hover:bg-[#1"]:hover,
+  html.light [class*="hover:bg-[#2"]:hover {
+    background-color: #f4f4f5 !important;
+  }
+
+  html.light [class*="border-[#0"],
+  html.light [class*="border-[#1"],
+  html.light [class*="border-[#2"] {
+    border-color: #e4e4e7 !important;
+  }
+
   html.light [class~="text-[#f4f4f5]"],
   html.light [class~="text-zinc-200"],
   html.light [class~="text-zinc-300"] {
@@ -72,6 +89,26 @@
 
   html.light [class~="text-zinc-600"] { color: #71717a !important; }
   html.light [class~="text-zinc-700"] { color: #52525b !important; }
+
+  /* Bright accent utilities are beautiful in dark mode but need deeper ink
+     and pale chips on a light surface to keep small labels readable. */
+  html.light [class*="text-indigo-300"], html.light [class*="text-indigo-400"] { color: #4338ca !important; }
+  html.light [class*="text-purple-300"], html.light [class*="text-purple-400"] { color: #7e22ce !important; }
+  html.light [class*="text-amber-300"], html.light [class*="text-amber-400"] { color: #a16207 !important; }
+  html.light [class*="text-emerald-300"], html.light [class*="text-emerald-400"] { color: #047857 !important; }
+  html.light [class*="text-cyan-300"], html.light [class*="text-cyan-400"] { color: #0e7490 !important; }
+
+  html.light [class*="bg-indigo-950/"], html.light [class*="bg-indigo-900/"] { background-color: #eef2ff !important; }
+  html.light [class*="bg-purple-950/"], html.light [class*="bg-purple-900/"] { background-color: #faf5ff !important; }
+  html.light [class*="bg-amber-950/"], html.light [class*="bg-amber-900/"] { background-color: #fffbeb !important; }
+  html.light [class*="bg-emerald-950/"], html.light [class*="bg-emerald-900/"] { background-color: #ecfdf5 !important; }
+  html.light [class*="bg-cyan-950/"], html.light [class*="bg-cyan-900/"] { background-color: #ecfeff !important; }
+
+  html.light [class*="border-indigo-800/"], html.light [class*="border-indigo-900/"] { border-color: #c7d2fe !important; }
+  html.light [class*="border-purple-800/"], html.light [class*="border-purple-900/"] { border-color: #e9d5ff !important; }
+  html.light [class*="border-amber-800/"], html.light [class*="border-amber-900/"] { border-color: #fde68a !important; }
+  html.light [class*="border-emerald-800/"], html.light [class*="border-emerald-900/"] { border-color: #a7f3d0 !important; }
+  html.light [class*="border-cyan-800/"], html.light [class*="border-cyan-900/"] { border-color: #a5f3fc !important; }
 
   html.light [class~="bg-[#0f1015]"],
   html.light [class~="bg-[#0f1015]/90"],
@@ -124,4 +161,16 @@
   html.light [class~="border-[#222432]"] {
     border-color: #e4e4e7 !important;
   }
+}
+
+/* Fine, low contrast geometry behind the content adds depth without competing
+   with the animated wormhole and galaxy scenes. */
+.ambient-geometry {
+  color: rgb(99 102 241 / 0.17);
+  opacity: 0.72;
+}
+
+html.dark .ambient-geometry {
+  color: rgb(165 180 252 / 0.3);
+  opacity: 0.9;
 }
