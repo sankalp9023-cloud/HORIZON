@@ -124,6 +124,7 @@ export default function ProjectCard({ project }) {
               type={project.visualType}
               title={project.name}
               status={project.status}
+            imageSrc={project.imageSrc}
             />
           </div>
         </div>
@@ -151,6 +152,7 @@ export default function ProjectCard({ project }) {
             type={project.visualType}
             title={project.name}
             status={project.status}
+          imageSrc={project.imageSrc}
           />
         </div>
 
@@ -209,3 +211,5 @@ export default function ProjectCard({ project }) {
     </article>
   );
 }
+
+

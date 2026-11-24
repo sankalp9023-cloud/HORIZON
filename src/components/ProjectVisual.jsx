@@ -1,7 +1,15 @@
 import React from 'react';
 import { Terminal, Layers, Network, Palette } from 'lucide-react';
 
-export default function ProjectVisual({ type }) {
+export default function ProjectVisual({ type, title, imageSrc }) {
+  if (type === 'cover-image' && imageSrc) {
+    return (
+      <div className="w-full aspect-[4/5] rounded-xl border border-zinc-800 dark:border-[#1c1e28] bg-zinc-950 dark:bg-[#0c0d12] overflow-hidden shadow-xs">
+        <img src={imageSrc} alt={`${title} project cover`} className="w-full h-full object-contain" />
+      </div>
+    );
+  }
+
   if (type === 'code-stream') {
     return (
       <div className="relative w-full h-full min-h-[220px] bg-zinc-950 dark:bg-[#0c0d12] rounded-xl border border-zinc-800 dark:border-[#1c1e28] p-5 font-mono text-xs overflow-hidden flex flex-col justify-between group-hover:border-zinc-700 dark:group-hover:border-[#2b2e3e] transition-colors shadow-xs">
@@ -165,3 +173,4 @@ export default function ProjectVisual({ type }) {
     </div>
   );
 }
+
